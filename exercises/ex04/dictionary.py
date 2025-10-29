@@ -1,12 +1,10 @@
-"""dictionary fucntion practice"""
+"""Dictionary fucntion practice."""
 
 __author__ = "730707796"
 
 
-"""use a dictionary to invert the keys and values"""
-
-
 def invert(source: dict[str, str]) -> dict[str, str]:
+    """Use a dictionary to invert the keys and values."""
     result: dict[str, str] = {}
     for key in source:
         value = source[key]  # sets value as a variable
@@ -16,10 +14,8 @@ def invert(source: dict[str, str]) -> dict[str, str]:
     return result
 
 
-"""take favorite colors and return the most popular"""
-
-
 def favorite_color(pick: dict[str, str]) -> str:
+    """Take favorite colors and return the most popular."""
     color_count: dict[str, int] = {}
     for key in pick:
         color = pick[key]
@@ -40,10 +36,8 @@ def favorite_color(pick: dict[str, str]) -> str:
     return max_color
 
 
-"""count how many times the string is in the list"""
-
-
 def count(inventory: list[str]) -> dict[str, int]:
+    """Count how many times the string is in the list."""
     result: dict[str, int] = {}  # makes sure the dictionary is empty
     for item in inventory:
         if item in result:  # either adds the item to its group or makes new group
@@ -53,27 +47,27 @@ def count(inventory: list[str]) -> dict[str, int]:
     return result
 
 
-"""organize a list by first letter"""
-
-
 def alphabetizer(words: list[str]) -> dict[str, list[str]]:
+    """Organize a list by first letter."""
     result: dict[str, list[str]] = {}
     for word in words:
         first_letter = word[0].lower()
-        if first_letter in result:  # adds the word to group if it has same first letter
-            result[first_letter].append(word)
-        else:  # or puts the word by itself
-            result[first_letter] = [word]
+        if first_letter.isalpha():
+            if (
+                first_letter in result
+            ):  # adds the word to group if it has same first letter
+                result[first_letter].append(word)
+            else:  # or puts the word by itself
+                result[first_letter] = [word]
     return result
-
-
-"""changer attendance log to add a stuent to a day"""
 
 
 def update_attendance(
     attendance_log: dict[str, list[str]], day: str, student: str
 ) -> None:
+    """Changer attendance log to add a stuent to a day."""
     if day in attendance_log:
-        attendance_log[day].append(student)  # adds student
+        if student not in attendance_log[day]:
+            attendance_log[day].append(student)  # adds student
     else:
         attendance_log[day] = [student]
