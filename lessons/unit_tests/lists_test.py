@@ -1,4 +1,4 @@
-from lessons.unit_tests.list_fns import get_first
+from lessons.unit_tests.list_fns import get_first, remove_first
 
 
 def test_get_first_use_case() -> None:
